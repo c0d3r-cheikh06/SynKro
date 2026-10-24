@@ -52,13 +52,16 @@ export async function checkDatabaseHealth(): Promise<{
     await prisma.$queryRaw`SELECT 1`;
     return { connected: true };
   } catch (error) {
+    const isProduction = process.env.NODE_ENV === "production";
     const message =
       error instanceof Error ? error.message : "Erreur de connexion PostgreSQL";
     return {
       connected: false,
-      error: isDatabaseConnectionError(error)
-        ? "Le serveur PostgreSQL n'est pas joignable sur l'URL configurée (DATABASE_URL)."
-        : message,
+      error: isProduction
+        ? "Le service de base de données est actuellement indisponible."
+        : isDatabaseConnectionError(error)
+          ? "Le serveur PostgreSQL n'est pas joignable sur l'URL configurée (DATABASE_URL)."
+          : message,
     };
   }
 }

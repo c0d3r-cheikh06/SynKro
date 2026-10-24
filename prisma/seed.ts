@@ -23,6 +23,55 @@ const TECH_INTERESTS = [
   "Design UI/UX", "Jeux Vidéo", "Football", "Lecture & Mangas",
 ];
 
+/**
+ * Vérifie de manière stricte et restrictive si une URL PostgreSQL pointe exclusivement
+ * vers une instance locale autorisée.
+ * Hôtes locaux strictement reconnus :
+ * - localhost
+ * - 127.0.0.1 (IPv4 loopback)
+ * - ::1 ou [::1] (IPv6 loopback)
+ * - host.docker.internal (conteneur Docker sous Windows / macOS)
+ *
+ * Tout hôte distant, adresse IP publique, nom de domaine cloud ou URL invalide/indéterminée renvoie FALSE.
+ */
+function isStrictlyLocalDatabaseUrl(rawUrl: string | undefined): boolean {
+  if (!rawUrl || typeof rawUrl !== "string") {
+    return false;
+  }
+
+  const trimmed = rawUrl.trim();
+  if (!trimmed) {
+    return false;
+  }
+
+  let hostname: string | null = null;
+
+  try {
+    const parsed = new URL(trimmed);
+    hostname = parsed.hostname;
+  } catch {
+    const match = trimmed.match(/@([^/:?#]+)/);
+    if (match) {
+      hostname = match[1];
+    }
+  }
+
+  if (!hostname) {
+    return false;
+  }
+
+  const normalizedHost = hostname.replace(/^\[|\]$/g, "").toLowerCase().trim();
+
+  const ALLOWED_LOCAL_HOSTS = new Set([
+    "localhost",
+    "127.0.0.1",
+    "::1",
+    "host.docker.internal",
+  ]);
+
+  return ALLOWED_LOCAL_HOSTS.has(normalizedHost);
+}
+
 async function main() {
   console.log("🌱 Initialisation de la base de données Synkro...");
 
@@ -232,29 +281,51 @@ async function main() {
     );
   }
 
-  // 4. Règle absolue de sécurité en Production :
-  // En production, nous ne créons JAMAIS de comptes de démonstration, de faux jumelages ou de mots de passe de test,
-  // même si SEED_DEMO_DATA=true est accidentellement défini dans l'environnement.
-  if (isProduction) {
+  // 4. Politique restrictive absolue pour les données de démonstration :
+  // Les données de test (comptes de démonstration, 68 faux étudiants, jumelages fictifs)
+  // ne peuvent être créées QUE SI TOUTES les conditions suivantes sont simultanément réunies :
+  // 1. L'environnement n'est PAS la production (NODE_ENV !== "production")
+  // 2. DATABASE_URL est explicitement identifiée comme pointant vers un hôte local autorisé (localhost, 127.0.0.1, ::1)
+  // 3. DIRECT_URL (si définie) pointe également vers un hôte local autorisé
+  // 4. L'autorisation SEED_DEMO_DATA est explicitement activée (SEED_DEMO_DATA === "true" ou "1")
+  //
+  // ⚠️ Règle absolue : si l'adresse est distante, inconnue, invalide ou indéterminée, aucune donnée
+  // de démonstration n'est insérée, même si SEED_DEMO_DATA=true est présent dans l'environnement.
+  const dbUrl = process.env.DATABASE_URL;
+  const directUrl = process.env.DIRECT_URL;
+
+  const isDbLocal = isStrictlyLocalDatabaseUrl(dbUrl);
+  const isDirectLocal = !directUrl || isStrictlyLocalDatabaseUrl(directUrl);
+  const isStrictlyLocal = isDbLocal && isDirectLocal;
+
+  const isDemoSeedExplicitlyAuthorized =
+    process.env.SEED_DEMO_DATA === "true" ||
+    process.env.SEED_DEMO_DATA === "1";
+
+  if (isProduction || !isStrictlyLocal) {
     console.log(
-      "🔒 Environnement de production détecté : seuls les groupes officiels, configurations et l'administrateur principal ont été initialisés."
+      "🔒 Base de données distante ou environnement de production détecté : seuls les groupes officiels, configurations et l'administrateur principal ont été initialisés."
     );
     console.log(
-      "ℹ Règle absolue de sécurité : aucun compte de démonstration ni mot de passe public n'a été inséré."
+      "ℹ Règle absolue de sécurité : aucun compte de démonstration ni donnée fictive n'a été inséré sur cette base."
     );
-    console.log("✅ Initialisation production terminée avec succès !");
+    console.log("✅ Initialisation sécurisée terminée avec succès !");
     return;
   }
 
-  // 5. En développement uniquement : création facultative des données de test
-  const shouldSeedDemo = process.env.SEED_DEMO_DATA !== "false";
-  if (!shouldSeedDemo) {
-    console.log("ℹ SEED_DEMO_DATA=false : génération des comptes de test ignorée.");
-    console.log("✅ Initialisation terminée avec succès !");
+  // 5. En développement local uniquement : vérification de l'autorisation explicite
+  if (!isDemoSeedExplicitlyAuthorized) {
+    console.log(
+      "ℹ Base locale détectée, mais SEED_DEMO_DATA n'est pas explicitement activé (\"true\") : génération des données de démonstration ignorée."
+    );
+    console.log(
+      "💡 Pour injecter les 68 étudiants et jumelages de test en local, définissez SEED_DEMO_DATA=\"true\" dans votre fichier .env."
+    );
+    console.log("✅ Initialisation locale terminée avec succès !");
     return;
   }
 
-  console.log("🛠 Génération des comptes et données de test locaux (développement uniquement)...");
+  console.log("🛠 Base locale confirmée et autorisation validée : génération des comptes et données de test...");
 
   const adminPasswordHash = await hashPassword("AdminSynkro2026!");
   const studentPasswordHash = await hashPassword("EtudiantSynkro2026!");

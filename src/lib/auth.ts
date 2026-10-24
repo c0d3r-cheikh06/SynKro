@@ -89,9 +89,16 @@ const providers = [
         });
       } catch (err) {
         if (isDatabaseConnectionError(err)) {
-          const store = getFallbackStore();
-          const target = store.users.find((u) => u.id === user.id);
-          if (target) target.lastLoginAt = new Date();
+          if (process.env.NODE_ENV === "production") {
+            console.error(
+              "[Synkro Auth] Erreur de mise à jour lastLoginAt en production:",
+              err instanceof Error ? err.name : "DBError"
+            );
+          } else {
+            const store = getFallbackStore();
+            const target = store.users.find((u) => u.id === user.id);
+            if (target) target.lastLoginAt = new Date();
+          }
         }
       }
 
@@ -285,12 +292,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             user.id = existingByEmail.id;
           }
         } catch (err) {
-          if (!isDatabaseConnectionError(err)) {
-            console.error("[Synkro Auth] Google OAuth signIn error:", err);
+          if (!isDatabaseConnectionError(err) || process.env.NODE_ENV === "production") {
+            console.error(
+              "[Synkro Auth] Erreur PostgreSQL lors de la connexion Google OAuth:",
+              err instanceof Error ? err.name : "DBError"
+            );
             return false;
           }
 
-          // Offline memory fallback store
+          // Offline memory fallback store (développement local uniquement)
           const store = getFallbackStore();
           const existing = store.users.find(
             (u) =>

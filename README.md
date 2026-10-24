@@ -72,10 +72,24 @@ docker run --name synkro-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD
 ```
 
 ### Option B — Service PostgreSQL natif Windows
-Créez une base de données nommée `synkro` et mettez à jour `DATABASE_URL` dans `.env` :
+Créez une base de données nommée `synkro` et mettez à jour `DATABASE_URL` et `DIRECT_URL` dans `.env` :
 ```env
 DATABASE_URL="postgresql://postgres:VOTRE_MOT_DE_PASSE@localhost:5432/synkro?schema=public"
+DIRECT_URL="postgresql://postgres:VOTRE_MOT_DE_PASSE@localhost:5432/synkro?schema=public"
 ```
+
+### Configuration Prisma (`DATABASE_URL` vs `DIRECT_URL`)
+Le fichier `prisma/schema.prisma` configure explicitement :
+```prisma
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+```
+* **`DATABASE_URL`** : Utilisée au runtime par l'application Next.js (`@prisma/client`). En production, elle pointe vers le pooler de connexions de votre hébergeur (mode transaction / PgBouncer).
+* **`DIRECT_URL`** : Utilisée exclusivement par le moteur de migration Prisma (`npx prisma migrate deploy`). Elle cible la connexion directe sans pooler, indispensable pour poser des verrous exclusifs (*advisory locks*) lors des migrations DDL.
+* **En développement local** : Ne disposant pas de pooler, `DATABASE_URL` et `DIRECT_URL` pointent vers la même base de données locale.
 
 ### Appliquer les migrations et les données initiales (Seed)
 Une fois PostgreSQL démarré sur le port `5432` :
@@ -138,7 +152,11 @@ npm run build
 npm run start
 ```
 
-### Comptes de démonstration (créés par `npm run db:seed` et présents en mode local)
+### Comptes de démonstration (développement local uniquement)
+
+> [!IMPORTANT]
+> **Environnement local uniquement** : Ces identifiants de test sont réservés au développement local. Ils sont **strictement exclus de la production et de toute base distante**. Le script `prisma/seed.ts` applique une politique de sécurité restrictive : les données de démonstration ne peuvent être générées **que si la base est explicitement identifiée comme un hôte local (localhost, 127.0.0.1, ::1)**, que `NODE_ENV` n'est pas `production` et que `SEED_DEMO_DATA="true"` est explicitement activé dans `.env`. Dès qu'une adresse est distante, inconnue ou que l'environnement est en production, aucune donnée de test n'est créée.
+
 | Rôle | Adresse e-mail | Mot de passe | Statut |
 | :--- | :--- | :--- | :--- |
 | **Administrateur** | `admin@synkro.app` | `AdminSynkro2026!` | `ACTIVE` (DUT INFO) |
@@ -148,20 +166,51 @@ npm run start
 
 ---
 
-## 7. Déploiement sur Vercel
+## 7. Préparation au Déploiement en Production (Vercel + PostgreSQL Hébergé)
 
-1. Connectez votre dépôt Git à **Vercel**.
-2. Associez une base **Vercel Postgres / Neon** (`DATABASE_URL`) et un stockage **Vercel Blob** (`BLOB_READ_WRITE_TOKEN`) pour la persistance des photos de l'album rétrospectif `/retro`.
-3. Configurez les variables d'environnement dans Vercel :
-   - `DATABASE_URL`
-   - `AUTH_SECRET`
-   - `NEXT_PUBLIC_APP_URL`
-   - `EMAIL_PROVIDER="RESEND"` et `RESEND_API_KEY`
-   - `BLOB_READ_WRITE_TOKEN`
-   - `CRON_SECRET`
-   - `AUTH_GOOGLE_ID` et `AUTH_GOOGLE_SECRET` (optionnels)
-4. Commande de build Vercel :
-   ```bash
-   npx prisma generate && npx prisma migrate deploy && next build
+### 7.1 Prérequis de production indispensables
+
+1. **Base de données PostgreSQL hébergée** (ex: Neon Serverless Postgres, Supabase, Vercel Postgres) :
+   - `DATABASE_URL` : Chaîne de connexion avec connection pooler (port pooler / mode transaction) pour les requêtes Next.js.
+   - `DIRECT_URL` : Chaîne de connexion directe sans pooler (port 5432 standard), nécessaire pour exécuter les migrations DDL.
+2. **Authentification & Sécurité** :
+   - `AUTH_SECRET` : Clé secrète cryptographique générée aléatoirement (minimum 32 octets).
+   - `ADMIN_EMAIL` : Votre adresse e-mail d'administrateur principal (ex: `fazethiam@gmail.com`).
+   - `ADMIN_INITIAL_PASSWORD` : Mot de passe initial robuste (au moins 12 caractères en production, non trivial).
+   - `NEXT_PUBLIC_APP_URL` : URL publique définitive (ex: `https://synkro.vercel.app`).
+   - `SERVER_ACTIONS_ALLOWED_ORIGINS` : Domaine de production autorisé pour les Server Actions (ex: `synkro.vercel.app`).
+3. **E-mails Transactionnels réels** :
+   - `EMAIL_PROVIDER="RESEND"` avec une clé API valide `RESEND_API_KEY` et un domaine expéditeur vérifié (`EMAIL_FROM="Synkro <no-reply@votre-domaine.sn>"`).
+4. **Stockage persistant des photos (/retro)** :
+   - `BLOB_READ_WRITE_TOKEN` fourni par Vercel Blob pour la persistance des photos soumises par les étudiants.
+5. **Tâche planifiée Cron** :
+   - `CRON_SECRET` : Jeton secret pour sécuriser l'appel planifié automatique `/api/cron/weekly-reminder`.
+
+### 7.2 Étapes de déploiement (Migrations séparées du Build)
+
+Pour garantir la sécurité et la stabilité de la base de production, l'exécution des migrations de schéma est strictement séparée du build de l'application :
+
+1. **Étape 1 — Appliquer les migrations de schéma sur la base hébergée** :
+   Exécutez explicitement cette commande depuis votre machine ou votre pipeline CI/CD en pointant vers l'URL directe de production :
+   ```powershell
+   npx prisma migrate deploy
    ```
-5. Le fichier `vercel.json` configure automatiquement la tâche planifiée `/api/cron/weekly-reminder` (protégée par `Authorization: Bearer <CRON_SECRET>`).
+   *(Ne lancez pas cette commande au sein de la commande de build Next.js afin d'éviter tout blocage de déploiement ou modification non désirée lors des prévisualisations Vercel).*
+
+2. **Étape 2 — Initialiser les classes officielles et l'administrateur** :
+   Une fois les tables migrées, initialisez les 5 anciennes classes et le compte administrateur principal :
+   ```powershell
+   npm run db:seed
+   npm run admin:setup
+   ```
+   *(En production, aucun compte de démonstration n'est créé).*
+
+3. **Étape 3 — Compilation Next.js sur Vercel** :
+   Dans le tableau de bord Vercel, la commande de build standard du projet est :
+   ```bash
+   npm run build
+   ```
+   Cette commande exécute uniquement `prisma generate && next build`, garantissant une compilation rapide, optimisée avec Turbopack et totalement indépendante de l'état de synchronisation DDL de la base.
+
+4. **Étape 4 — Tâche planifiée automatique** :
+   Le fichier `vercel.json` présent à la racine active automatiquement la tâche Cron Vercel vers `/api/cron/weekly-reminder` chaque lundi à 08h00 UTC, protégée par l'en-tête `Authorization: Bearer <CRON_SECRET>`.

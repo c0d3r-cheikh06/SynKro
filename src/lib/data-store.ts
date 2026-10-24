@@ -254,6 +254,12 @@ const INTERESTS_POOL = [
 ];
 
 function initFallbackState(): FallbackState {
+  if (process.env.NODE_ENV === "production") {
+    throw new Error(
+      "Le mode autonome en mémoire avec données de démonstration est strictement désactivé en production."
+    );
+  }
+
   if (globalFallback.__synkroFallbackState) {
     return globalFallback.__synkroFallbackState;
   }
@@ -908,7 +914,30 @@ function initFallbackState(): FallbackState {
 }
 
 export function getFallbackStore(): FallbackState {
+  if (process.env.NODE_ENV === "production") {
+    throw new Error(
+      "Le mode autonome en mémoire avec données de démonstration est strictement désactivé en production."
+    );
+  }
   return initFallbackState();
+}
+
+/**
+ * Gère une erreur de connexion à PostgreSQL.
+ * - En production : journalise un message serveur sécurisé et lève immédiatement une exception
+ *   générique sans exposer de secrets ou de données de démonstration aux visiteurs.
+ * - En développement : permet l'utilisation du mode de secours local en mémoire.
+ */
+function handleDatabaseConnectionError(err: unknown, context: string): void {
+  if (process.env.NODE_ENV === "production") {
+    console.error(
+      `[Synkro Database] Erreur critique de connexion PostgreSQL en production (${context}):`,
+      err instanceof Error ? err.name : "DBConnectionError"
+    );
+    throw new Error(
+      "Le service de base de données est actuellement indisponible. Veuillez réessayer ultérieurement."
+    );
+  }
 }
 
 // ==================== UNIFIED DATA ACCESS LAYER ====================
@@ -941,6 +970,7 @@ export async function getActiveGroups(): Promise<{
     };
   } catch (err) {
     if (isDatabaseConnectionError(err)) {
+      handleDatabaseConnectionError(err, "getActiveGroups");
       const store = getFallbackStore();
       return { dbConnected: false, groups: store.groups };
     }
@@ -992,6 +1022,7 @@ export async function findUserByEmail(email: string): Promise<{
     };
   } catch (err) {
     if (isDatabaseConnectionError(err)) {
+      handleDatabaseConnectionError(err, "findUserByEmail");
       const store = getFallbackStore();
       const found =
         store.users.find(
@@ -1044,6 +1075,7 @@ export async function findUserById(id: string): Promise<{
     };
   } catch (err) {
     if (isDatabaseConnectionError(err)) {
+      handleDatabaseConnectionError(err, "findUserById");
       const store = getFallbackStore();
       const found = store.users.find((u) => u.id === id) ?? null;
       return { user: found, dbConnected: false };
@@ -1255,6 +1287,7 @@ export async function getStudentDashboardData(userId: string): Promise<{
     };
   } catch (err) {
     if (isDatabaseConnectionError(err)) {
+      handleDatabaseConnectionError(err, "getStudentDashboardData");
       const store = getFallbackStore();
       const user =
         store.users.find((u) => u.id === userId) ?? store.users[1];
@@ -1567,6 +1600,7 @@ export async function getAdminDashboardData(): Promise<{
     };
   } catch (err) {
     if (isDatabaseConnectionError(err)) {
+      handleDatabaseConnectionError(err, "getAdminDashboardData");
       const store = getFallbackStore();
       return {
         dbConnected: false,
@@ -1676,6 +1710,7 @@ export async function getRetroAlbumData(currentUserId: string): Promise<{
     };
   } catch (err) {
     if (isDatabaseConnectionError(err)) {
+      handleDatabaseConnectionError(err, "getRetroAlbumData");
       const store = getFallbackStore();
       const approvedPhotos = store.photos.filter(
         (p) => p.status === PhotoStatus.APPROVED && p.allConsentsGiven
