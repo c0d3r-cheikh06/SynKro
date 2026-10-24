@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <radialGradient id="bg-kora" cx="50%" cy="35%" r="72%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="50%" stop-color="#173B67"/>
+      <stop offset="100%" stop-color="#060B16"/>
+    </radialGradient>
+    <linearGradient id="owl-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="55%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="48" fill="url(#bg-kora)"/>
+  <circle cx="128" cy="128" r="106" stroke="#38BDF8" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <circle cx="48" cy="60" r="3" fill="#38BDF8"/>
+  <circle cx="208" cy="68" r="2.5" fill="#A78BFA"/>
+  <circle cx="60" cy="196" r="2" fill="#60A5FA"/>
+
+  <!-- Kora Owl Ear Tuft Plumes -->
+  <path d="M58 68L92 94L104 56Z" fill="#1D4ED8" stroke="#60A5FA" stroke-width="2"/>
+  <path d="M198 68L164 94L152 56Z" fill="#1D4ED8" stroke="#60A5FA" stroke-width="2"/>
+
+  <!-- Owl Body & Cosmic Armor -->
+  <circle cx="128" cy="138" r="76" fill="url(#owl-body)" stroke="#60A5FA" stroke-opacity="0.4" stroke-width="2"/>
+  <ellipse cx="128" cy="168" rx="44" ry="36" fill="#EFF6FF"/>
+
+  <!-- Large Expressive Owl Eyes -->
+  <circle cx="98" cy="116" r="26" fill="#FFFFFF"/>
+  <circle cx="158" cy="116" r="26" fill="#FFFFFF"/>
+  <circle cx="100" cy="116" r="14" fill="#0F172A"/>
+  <circle cx="156" cy="116" r="14" fill="#0F172A"/>
+  <circle cx="105" cy="111" r="5" fill="#38BDF8"/>
+  <circle cx="161" cy="111" r="5" fill="#38BDF8"/>
+  <circle cx="96" cy="120" r="2.5" fill="#FFFFFF"/>
+  <circle cx="152" cy="120" r="2.5" fill="#FFFFFF"/>
+
+  <!-- Holographic Engineer Glasses -->
+  <rect x="64" y="88" width="62" height="52" rx="18" stroke="#38BDF8" stroke-width="5" fill="#38BDF8" fill-opacity="0.1"/>
+  <rect x="130" y="88" width="62" height="52" rx="18" stroke="#38BDF8" stroke-width="5" fill="#38BDF8" fill-opacity="0.1"/>
+  <line x1="124" y1="112" x2="132" y2="112" stroke="#38BDF8" stroke-width="5"/>
+
+  <!-- Golden Beak -->
+  <polygon points="128,128 116,148 140,148" fill="#F59E0B"/>
+
+  <!-- Mini Cyber Laptop Emblem -->
+  <rect x="82" y="166" width="92" height="46" rx="10" fill="#0F172A" stroke="#38BDF8" stroke-width="3.5"/>
+  <path d="M114 183L106 189L114 195M142 183L150 189L142 195M132 180L124 198" stroke="#38BDF8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="pxBg" cx="50%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#060B16"/>
+    </radialGradient>
+    <radialGradient id="pxHalo" cx="50%" cy="42%" r="48%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.42"/>
+      <stop offset="60%" stop-color="#8B5CF6" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#060B16" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pxSkin" cx="42%" cy="34%" r="64%">
+      <stop offset="0%" stop-color="#A6653E"/>
+      <stop offset="55%" stop-color="#854B28"/>
+      <stop offset="100%" stop-color="#592E14"/>
+    </radialGradient>
+    <radialGradient id="pxCheek" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F43F5E" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#F43F5E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pxJacket" x1="120" y1="340" x2="392" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="pxHair" x1="140" y1="60" x2="370" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="pxGlass" x1="168" y1="215" x2="344" y2="255" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Studio Backdrop -->
+  <rect width="512" height="512" rx="96" fill="url(#pxBg)"/>
+  <circle cx="256" cy="224" r="220" fill="url(#pxHalo)"/>
+  <circle cx="96" cy="108" r="3" fill="#38BDF8" opacity="0.75"/>
+  <circle cx="418" cy="132" r="4" fill="#A78BFA" opacity="0.8"/>
+  <circle cx="404" cy="82" r="2" fill="#E0F2FE" opacity="0.6"/>
+
+  <!-- Back Braids Silhouette -->
+  <path d="M138 190C112 250 108 350 124 445C142 448 158 440 166 420C158 340 162 255 176 196Z" fill="url(#pxHair)"/>
+  <path d="M374 190C400 250 404 350 388 445C370 448 354 440 346 420C354 340 350 255 336 196Z" fill="url(#pxHair)"/>
+  <!-- Cyan & Gold Braid Threads -->
+  <path d="M136 245C126 305 126 365 134 425" stroke="#38BDF8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M376 245C386 305 386 365 378 425" stroke="#A78BFA" stroke-width="5" stroke-linecap="round"/>
+  <rect x="127" y="346" width="14" height="8" rx="3" fill="#FBBF24"/>
+  <rect x="371" y="346" width="14" height="8" rx="3" fill="#FBBF24"/>
+
+  <!-- Shoulders & Stylized 3D Tech Jacket -->
+  <path d="M84 512C90 412 148 364 256 364C364 364 422 412 428 512Z" fill="url(#pxJacket)"/>
+  <path d="M168 372L214 468L256 440L298 468L344 372" fill="#0F172A" opacity="0.85"/>
+  <path d="M164 374L214 472L256 442L298 472L348 374" stroke="#38BDF8" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- Neck & Ambient Shadow -->
+  <rect x="222" y="302" width="68" height="86" rx="32" fill="url(#pxSkin)"/>
+  <path d="M222 322C238 342 274 342 290 322V352C270 366 242 366 222 352Z" fill="#3B1A08" opacity="0.42"/>
+
+  <!-- Ears & Gold Hoops -->
+  <ellipse cx="152" cy="248" rx="16" ry="26" fill="url(#pxSkin)"/>
+  <ellipse cx="360" cy="248" rx="16" ry="26" fill="url(#pxSkin)"/>
+  <circle cx="148" cy="274" r="10" stroke="#FBBF24" stroke-width="4"/>
+  <circle cx="364" cy="274" r="10" stroke="#FBBF24" stroke-width="4"/>
+
+  <!-- 3D Sculpted Head -->
+  <path d="M156 206C156 138 198 102 256 102C314 102 356 138 356 206C356 282 312 338 256 338C200 338 156 282 156 206Z" fill="url(#pxSkin)"/>
+  <!-- Rim Light on Cheek/Jaw -->
+  <path d="M160 212C160 276 200 330 256 335" stroke="#38BDF8" stroke-width="3" stroke-opacity="0.45" stroke-linecap="round"/>
+
+  <!-- Subtle Cheek Warmth -->
+  <circle cx="196" cy="264" r="24" fill="url(#pxCheek)"/>
+  <circle cx="316" cy="264" r="24" fill="url(#pxCheek)"/>
+
+  <!-- Volumetric Crown Braids & Top Bun -->
+  <circle cx="256" cy="84" r="46" fill="url(#pxHair)"/>
+  <path d="M214 96C236 82 276 82 298 96" stroke="#38BDF8" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M150 202C152 130 196 92 256 92C316 92 360 130 362 202C344 160 308 136 256 136C204 136 168 160 150 202Z" fill="url(#pxHair)"/>
+
+  <!-- Expressive Eyebrows -->
+  <path d="M184 198C198 190 218 190 232 196" stroke="#0F172A" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M280 196C294 190 314 190 328 198" stroke="#0F172A" stroke-width="6.5" stroke-linecap="round"/>
+
+  <!-- 3D Glossy Eyes -->
+  <ellipse cx="208" cy="226" rx="20" ry="15" fill="#F8FAFC"/>
+  <ellipse cx="304" cy="226" rx="20" ry="15" fill="#F8FAFC"/>
+  <circle cx="210" cy="226" r="11" fill="#2A1205"/>
+  <circle cx="302" cy="226" r="11" fill="#2A1205"/>
+  <circle cx="210" cy="226" r="6" fill="#090D16"/>
+  <circle cx="302" cy="226" r="6" fill="#090D16"/>
+  <!-- Dual Specular Catchlights -->
+  <circle cx="215" cy="221" r="4" fill="#FFFFFF"/>
+  <circle cx="307" cy="221" r="4" fill="#FFFFFF"/>
+  <circle cx="205" cy="231" r="2" fill="#38BDF8"/>
+  <circle cx="297" cy="231" r="2" fill="#38BDF8"/>
+  <!-- Upper Eyelashes -->
+  <path d="M186 222C194 210 222 210 230 222" stroke="#090D16" stroke-width="5" stroke-linecap="round"/>
+  <path d="M282 222C290 210 318 210 326 222" stroke="#090D16" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Sculpted Nose with Highlight -->
+  <path d="M256 218V258C248 264 264 264 268 258" stroke="#4D250E" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="255" cy="254" r="3" fill="#C68B65" opacity="0.55"/>
+
+  <!-- Confident Warm Smile -->
+  <path d="M224 286C240 302 272 302 288 286" stroke="#431E0C" stroke-width="6" stroke-linecap="round"/>
+  <path d="M232 289C245 299 267 299 280 289" stroke="#F8FAFC" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+
+  <!-- Frameless AR Pixel Glasses -->
+  <rect x="172" y="202" width="72" height="46" rx="16" fill="#38BDF8" fill-opacity="0.1" stroke="url(#pxGlass)" stroke-width="4"/>
+  <rect x="268" y="202" width="72" height="46" rx="16" fill="#38BDF8" fill-opacity="0.1" stroke="url(#pxGlass)" stroke-width="4"/>
+  <path d="M244 222H268" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+</svg>

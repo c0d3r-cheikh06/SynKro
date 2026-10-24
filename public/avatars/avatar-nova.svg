@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="nvBg" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#050812"/>
+    </radialGradient>
+    <radialGradient id="nvHalo" cx="50%" cy="42%" r="48%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#2563EB" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#050812" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nvSkin" cx="42%" cy="35%" r="62%">
+      <stop offset="0%" stop-color="#B07048"/>
+      <stop offset="58%" stop-color="#8C512D"/>
+      <stop offset="100%" stop-color="#5E3217"/>
+    </radialGradient>
+    <linearGradient id="nvHijab" x1="120" y1="88" x2="392" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="55%" stop-color="#1E40AF"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="nvCoat" x1="96" y1="360" x2="416" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="url(#nvBg)"/>
+  <circle cx="256" cy="224" r="220" fill="url(#nvHalo)"/>
+  <circle cx="98" cy="106" r="3" fill="#38BDF8" opacity="0.8"/>
+  <circle cx="416" cy="118" r="3.5" fill="#BAE6FD" opacity="0.75"/>
+
+  <!-- Astral Data Lab Coat -->
+  <path d="M80 512C88 408 148 362 256 362C364 362 424 408 432 512Z" fill="url(#nvCoat)"/>
+  <path d="M172 368L256 476L340 368" fill="#0F172A"/>
+
+  <!-- Sculpted Royal-Blue Hijab Wrap -->
+  <path d="M132 224C132 126 184 84 256 84C328 84 380 126 380 224C380 326 346 410 256 426C166 410 132 326 132 224Z" fill="url(#nvHijab)"/>
+  <path d="M148 242C154 148 196 106 256 106C316 106 358 148 364 242" stroke="#38BDF8" stroke-width="3.5" stroke-opacity="0.55"/>
+  <!-- Hijab Drape Fold & Stellar Brooch -->
+  <path d="M168 342C206 384 294 388 346 346" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="256" cy="392" r="14" fill="#0F172A" stroke="#38BDF8" stroke-width="3.5"/>
+  <path d="M256 383L259 389L265 392L259 395L256 401L253 395L247 392L253 389Z" fill="#38BDF8"/>
+
+  <!-- Inner Headband -->
+  <path d="M164 186C184 142 216 126 256 126C296 126 328 142 348 186Z" fill="#0F172A"/>
+
+  <!-- 3D Face -->
+  <path d="M166 218C166 156 202 134 256 134C310 134 346 156 346 218C346 286 308 336 256 336C204 336 166 286 166 218Z" fill="url(#nvSkin)"/>
+
+  <!-- Brows -->
+  <path d="M190 202C204 194 222 194 234 200" stroke="#1E1B18" stroke-width="6" stroke-linecap="round"/>
+  <path d="M278 200C290 194 308 194 322 202" stroke="#1E1B18" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Expressive Eyes -->
+  <ellipse cx="212" cy="228" rx="19" ry="14.5" fill="#F8FAFC"/>
+  <ellipse cx="300" cy="228" rx="19" ry="14.5" fill="#F8FAFC"/>
+  <circle cx="214" cy="228" r="10.5" fill="#2A1205"/>
+  <circle cx="298" cy="228" r="10.5" fill="#2A1205"/>
+  <circle cx="214" cy="228" r="5.5" fill="#090D16"/>
+  <circle cx="298" cy="228" r="5.5" fill="#090D16"/>
+  <circle cx="218" cy="223" r="3.8" fill="#FFFFFF"/>
+  <circle cx="302" cy="223" r="3.8" fill="#FFFFFF"/>
+  <circle cx="209" cy="232" r="2" fill="#38BDF8"/>
+  <circle cx="293" cy="232" r="2" fill="#38BDF8"/>
+  <path d="M190 224C198 212 224 212 232 224" stroke="#090D16" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M280 224C288 212 314 212 322 224" stroke="#090D16" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Nose & Warm Smile -->
+  <path d="M256 222V258C248 264 264 264 268 258" stroke="#52270F" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M226 286C242 302 270 302 286 286" stroke="#52270F" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M234 289C246 298 266 298 278 289" stroke="#F8FAFC" stroke-width="3.8" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <radialGradient id="bg-khadija" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#060B16"/>
+    </radialGradient>
+    <radialGradient id="halo-khadija" cx="50%" cy="42%" r="48%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#2563EB" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="skin-khadija" x1="35%" y1="15%" x2="70%" y2="90%">
+      <stop offset="0%" stop-color="#8D5538"/>
+      <stop offset="55%" stop-color="#6E3F26"/>
+      <stop offset="100%" stop-color="#4A2715"/>
+    </linearGradient>
+    <linearGradient id="jacket-khadija" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="50%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="visor-khadija" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.88"/>
+      <stop offset="50%" stop-color="#60A5FA" stop-opacity="0.72"/>
+      <stop offset="100%" stop-color="#818CF8" stop-opacity="0.88"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Cosmic Backdrop -->
+  <rect width="256" height="256" rx="48" fill="url(#bg-khadija)"/>
+  <circle cx="128" cy="112" r="108" fill="url(#halo-khadija)"/>
+  <circle cx="128" cy="128" r="104" stroke="#38BDF8" stroke-opacity="0.22" stroke-width="1.5" stroke-dasharray="6 8"/>
+  <circle cx="48" cy="56" r="2.5" fill="#38BDF8" opacity="0.8"/>
+  <circle cx="210" cy="68" r="2" fill="#A78BFA" opacity="0.75"/>
+  <circle cx="202" cy="184" r="2.5" fill="#60A5FA" opacity="0.6"/>
+
+  <!-- Voluminous Afro Puffs (Back Layer) -->
+  <circle cx="76" cy="76" r="38" fill="#18121E"/>
+  <circle cx="180" cy="76" r="38" fill="#18121E"/>
+  <circle cx="128" cy="78" r="48" fill="#1E1726"/>
+  <!-- Hair Rim Light -->
+  <path d="M52 54C64 38 92 32 128 32C164 32 192 38 204 54" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Cyber Tech Jacket & Shoulders -->
+  <path d="M44 256C46 202 78 178 128 178C178 178 210 202 212 256H44Z" fill="url(#jacket-khadija)"/>
+  <!-- High Collar -->
+  <path d="M84 182L102 222L128 208L154 222L172 182" fill="#0F172A" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Glowing Chest Core -->
+  <polygon points="128,214 118,230 128,242 138,230" fill="#38BDF8" opacity="0.9"/>
+
+  <!-- Neck & Head -->
+  <rect x="111" y="148" width="34" height="40" rx="16" fill="#58311C"/>
+  <path d="M84 106C84 76 102 58 128 58C154 58 172 76 172 106C172 142 152 166 128 166C104 166 84 142 84 106Z" fill="url(#skin-khadija)"/>
+
+  <!-- Ears & Gold Cyber Studs -->
+  <circle cx="84" cy="116" r="9" fill="#6E3F26"/>
+  <circle cx="172" cy="116" r="9" fill="#58311C"/>
+  <circle cx="82" cy="121" r="3.5" fill="#FBBF24"/>
+  <circle cx="174" cy="121" r="3.5" fill="#FBBF24"/>
+
+  <!-- Front Hairline & Baby Hairs -->
+  <path d="M84 98C92 70 112 62 128 62C144 62 164 70 172 98C162 82 146 76 128 76C110 76 94 82 84 98Z" fill="#18121E"/>
+
+  <!-- Expressive Eyes -->
+  <ellipse cx="109" cy="110" rx="9" ry="7" fill="#FFFFFF"/>
+  <ellipse cx="147" cy="110" rx="9" ry="7" fill="#FFFFFF"/>
+  <circle cx="110" cy="110" r="5" fill="#1E1B18"/>
+  <circle cx="146" cy="110" r="5" fill="#1E1B18"/>
+  <circle cx="112" cy="108" r="2" fill="#FFFFFF"/>
+  <circle cx="148" cy="108" r="2" fill="#FFFFFF"/>
+
+  <!-- Eyebrows -->
+  <path d="M97 97C103 93 113 93 119 96" stroke="#18121E" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M137 96C143 93 153 93 159 97" stroke="#18121E" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Luminous Cyber-Visor Glasses -->
+  <rect x="91" y="98" width="36" height="23" rx="8" fill="url(#visor-khadija)" stroke="#E0F2FE" stroke-width="2"/>
+  <rect x="129" y="98" width="36" height="23" rx="8" fill="url(#visor-khadija)" stroke="#E0F2FE" stroke-width="2"/>
+  <line x1="127" y1="108" x2="129" y2="108" stroke="#E0F2FE" stroke-width="2.5"/>
+  <path d="M96 103L106 103" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  <path d="M134 103L144 103" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- Nose & Confident Smile -->
+  <path d="M128 114V127C125 129 123 128 122 127" stroke="#4A2715" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M114 139C120 146 136 146 142 139" stroke="#3B1D0E" stroke-width="3" stroke-linecap="round"/>
+  <path d="M117 140C122 144 134 144 139 140" stroke="#F8FAFC" stroke-width="2" stroke-linecap="round"/>
+</svg>

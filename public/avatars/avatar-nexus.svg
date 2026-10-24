@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="nxBg" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#0E4F6E"/>
+      <stop offset="55%" stop-color="#0B192C"/>
+      <stop offset="100%" stop-color="#040812"/>
+    </radialGradient>
+    <radialGradient id="nxHalo" cx="50%" cy="42%" r="48%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#040812" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nxSkin" cx="40%" cy="34%" r="64%">
+      <stop offset="0%" stop-color="#8A4E2B"/>
+      <stop offset="55%" stop-color="#68371A"/>
+      <stop offset="100%" stop-color="#42200B"/>
+    </radialGradient>
+    <linearGradient id="nxVest" x1="90" y1="355" x2="422" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#090D16"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="url(#nxBg)"/>
+  <circle cx="256" cy="224" r="220" fill="url(#nxHalo)"/>
+
+  <!-- Tied-Back Locs Silhouette -->
+  <path d="M144 156C124 220 120 304 132 372" stroke="#0F172A" stroke-width="24" stroke-linecap="round"/>
+  <path d="M368 156C388 220 392 304 380 372" stroke="#0F172A" stroke-width="24" stroke-linecap="round"/>
+  <path d="M162 128C142 200 138 290 148 360" stroke="#1E293B" stroke-width="16" stroke-linecap="round"/>
+  <path d="M350 128C370 200 374 290 364 360" stroke="#1E293B" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- Network Tactical Vest -->
+  <path d="M80 512C88 408 148 360 256 360C364 360 424 408 432 512Z" fill="url(#nxVest)"/>
+  <path d="M174 364L214 468H298L338 364" fill="#1D4ED8"/>
+  <path d="M172 364L212 470H300L340 364" stroke="#38BDF8" stroke-width="4"/>
+
+  <!-- Neck -->
+  <rect x="218" y="302" width="76" height="84" rx="34" fill="url(#nxSkin)"/>
+  <path d="M218 324C238 344 274 344 294 324V352C272 366 240 366 218 352Z" fill="#2A1205" opacity="0.45"/>
+
+  <!-- Head -->
+  <path d="M156 206C156 138 196 104 256 104C316 104 356 138 356 206C356 286 314 340 256 340C198 340 156 286 156 206Z" fill="url(#nxSkin)"/>
+
+  <!-- Top Sculpted Locs -->
+  <path d="M164 166C174 106 212 80 256 80C300 80 338 106 348 166C322 138 292 128 256 128C220 128 190 138 164 166Z" fill="#0B0F19"/>
+  <path d="M196 92C210 116 220 134 226 152M256 82V146M316 92C302 116 292 134 286 152" stroke="#1E293B" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- Brows & Eyes -->
+  <path d="M184 198C200 190 220 190 234 198" stroke="#090D16" stroke-width="7" stroke-linecap="round"/>
+  <path d="M278 198C292 190 312 190 328 198" stroke="#090D16" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="208" cy="226" rx="18" ry="13.5" fill="#F8FAFC"/>
+  <ellipse cx="304" cy="226" rx="18" ry="13.5" fill="#F8FAFC"/>
+  <circle cx="210" cy="226" r="10" fill="#231006"/>
+  <circle cx="302" cy="226" r="10" fill="#231006"/>
+  <circle cx="214" cy="221" r="3.5" fill="#FFFFFF"/>
+  <circle cx="306" cy="221" r="3.5" fill="#FFFFFF"/>
+
+  <!-- Amber Coding Glasses -->
+  <rect x="170" y="200" width="76" height="48" rx="14" fill="#F59E0B" fill-opacity="0.14" stroke="#FBBF24" stroke-width="4"/>
+  <rect x="266" y="200" width="76" height="48" rx="14" fill="#F59E0B" fill-opacity="0.14" stroke="#FBBF24" stroke-width="4"/>
+  <path d="M246 222H266" stroke="#FBBF24" stroke-width="4"/>
+
+  <!-- Nose, Goatee & Confident Smile -->
+  <path d="M256 222V260C248 266 264 266 268 258" stroke="#3B1A08" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M226 288C242 302 270 302 286 288" stroke="#1E1B18" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M222 316C238 334 274 334 290 316" stroke="#0B0F19" stroke-width="8" stroke-linecap="round"/>
+</svg>

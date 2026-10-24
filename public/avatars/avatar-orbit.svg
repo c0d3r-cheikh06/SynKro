@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="obBg" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#050914"/>
+    </radialGradient>
+    <radialGradient id="obHalo" cx="50%" cy="42%" r="48%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#050914" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="obSkin" cx="40%" cy="34%" r="64%">
+      <stop offset="0%" stop-color="#945632"/>
+      <stop offset="56%" stop-color="#703D1E"/>
+      <stop offset="100%" stop-color="#47230E"/>
+    </radialGradient>
+    <linearGradient id="obArmor" x1="88" y1="350" x2="424" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="50%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="url(#obBg)"/>
+  <circle cx="256" cy="224" r="220" fill="url(#obHalo)"/>
+
+  <!-- Robotics Exo-Collar Suit -->
+  <path d="M78 512C86 406 148 358 256 358C364 358 426 406 434 512Z" fill="url(#obArmor)"/>
+  <path d="M148 380L196 446H316L364 380" stroke="#38BDF8" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="256" cy="446" r="16" fill="#0F172A" stroke="#38BDF8" stroke-width="4"/>
+  <circle cx="256" cy="446" r="6" fill="#38BDF8"/>
+
+  <!-- Neck & Head -->
+  <rect x="218" y="302" width="76" height="82" rx="34" fill="url(#obSkin)"/>
+  <path d="M156 206C156 138 196 104 256 104C316 104 356 138 356 206C356 286 314 340 256 340C198 340 156 286 156 206Z" fill="url(#obSkin)"/>
+
+  <!-- Flat-Top Hair -->
+  <path d="M162 172L170 92H342L350 172C324 148 292 138 256 138C220 138 188 148 162 172Z" fill="#090D16"/>
+
+  <!-- Forehead Robotics Goggles -->
+  <rect x="158" y="120" width="196" height="52" rx="22" fill="#0F172A" stroke="#38BDF8" stroke-width="4"/>
+  <circle cx="206" cy="146" r="18" fill="#1E293B" stroke="#38BDF8" stroke-width="3.5"/>
+  <circle cx="306" cy="146" r="18" fill="#1E293B" stroke="#38BDF8" stroke-width="3.5"/>
+  <circle cx="210" cy="142" r="5" fill="#BAE6FD"/>
+  <circle cx="310" cy="142" r="5" fill="#BAE6FD"/>
+
+  <!-- Brows & Eyes -->
+  <path d="M184 202C200 194 220 194 234 202" stroke="#090D16" stroke-width="7" stroke-linecap="round"/>
+  <path d="M278 202C292 194 312 194 328 202" stroke="#090D16" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="208" cy="228" rx="18.5" ry="13.5" fill="#F8FAFC"/>
+  <ellipse cx="304" cy="228" rx="18.5" ry="13.5" fill="#F8FAFC"/>
+  <circle cx="210" cy="228" r="10" fill="#231006"/>
+  <circle cx="302" cy="228" r="10" fill="#231006"/>
+  <circle cx="214" cy="223" r="3.8" fill="#FFFFFF"/>
+  <circle cx="306" cy="223" r="3.8" fill="#FFFFFF"/>
+
+  <!-- Nose & Smile -->
+  <path d="M256 222V260C248 266 264 266 268 258" stroke="#3B1A08" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M224 288C240 304 272 304 288 288" stroke="#3B1A08" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M232 291C245 300 267 300 280 291" stroke="#F8FAFC" stroke-width="3.8" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="asBg" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="55%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#040711"/>
+    </radialGradient>
+    <radialGradient id="asHalo" cx="50%" cy="45%" r="48%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.5"/>
+      <stop offset="60%" stop-color="#8B5CF6" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#040711" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="asOwl" cx="45%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="55%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
+    </radialGradient>
+    <linearGradient id="asVisor" x1="120" y1="180" x2="392" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="url(#asBg)"/>
+  <circle cx="256" cy="236" r="220" fill="url(#asHalo)"/>
+  <ellipse cx="256" cy="256" rx="212" ry="78" transform="rotate(-16 256 256)" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="4" stroke-dasharray="12 12"/>
+
+  <!-- Cyber-Owl Ears / Crests -->
+  <path d="M112 124L184 188L206 108Z" fill="#1D4ED8" stroke="#38BDF8" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M400 124L328 188L306 108Z" fill="#1D4ED8" stroke="#38BDF8" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- 3D Owl Body & Gaming Armor Shoulders -->
+  <path d="M88 512C96 392 156 336 256 336C356 336 416 392 424 512Z" fill="#0F172A" stroke="#38BDF8" stroke-width="4"/>
+  <circle cx="256" cy="264" r="148" fill="url(#asOwl)"/>
+  <ellipse cx="256" cy="336" rx="92" ry="72" fill="#EFF6FF"/>
+
+  <!-- Expressive Giant Owl Eyes -->
+  <circle cx="196" cy="224" r="52" fill="#FFFFFF"/>
+  <circle cx="316" cy="224" r="52" fill="#FFFFFF"/>
+  <circle cx="200" cy="224" r="28" fill="#0F172A"/>
+  <circle cx="312" cy="224" r="28" fill="#0F172A"/>
+  <circle cx="208" cy="214" r="10" fill="#FFFFFF"/>
+  <circle cx="320" cy="214" r="10" fill="#FFFFFF"/>
+  <circle cx="190" cy="234" r="5" fill="#38BDF8"/>
+  <circle cx="302" cy="234" r="5" fill="#38BDF8"/>
+
+  <!-- Holographic Tech Glasses -->
+  <rect x="130" y="166" width="120" height="106" rx="34" fill="#38BDF8" fill-opacity="0.1" stroke="url(#asVisor)" stroke-width="10"/>
+  <rect x="262" y="166" width="120" height="106" rx="34" fill="#38BDF8" fill-opacity="0.1" stroke="url(#asVisor)" stroke-width="10"/>
+  <line x1="250" y1="216" x2="262" y2="216" stroke="#38BDF8" stroke-width="10"/>
+
+  <!-- Golden Beak -->
+  <polygon points="256,248 232,288 280,288" fill="#F59E0B"/>
+
+  <!-- Glowing Laptop Crest -->
+  <rect x="156" y="346" width="200" height="98" rx="22" fill="#091326" stroke="#38BDF8" stroke-width="6"/>
+  <path d="M226 382L208 396L226 410M286 382L304 396L286 410M264 376L248 416" stroke="#38BDF8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

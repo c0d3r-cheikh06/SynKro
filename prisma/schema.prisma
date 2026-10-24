@@ -1,0 +1,507 @@
+// SynKro - Prisma Schema
+// Database: PostgreSQL
+// ORM: Prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==================== AUTHENTICATION ====================
+
+model User {
+  id                String    @id @default(cuid())
+  email             String    @unique
+  emailVerified     DateTime?
+  emailNormalized   String    @unique
+  phone             String?
+  phoneNormalized   String?
+  firstName         String
+  lastName          String
+  passwordHash      String?
+  image             String?
+  bio               String?
+  interests         String[]
+  role              Role      @default(STUDENT)
+  status            AccountStatus @default(PENDING_VERIFICATION)
+  statusReason      String?
+  groupId           String?
+  group             Group?    @relation(fields: [groupId], references: [id])
+
+  // Notification preferences
+  notifyEmail       Boolean   @default(true)
+  notifyMatchPublished Boolean @default(true)
+  notifyWeeklyReminder Boolean @default(true)
+  notifyEndOfCycle  Boolean   @default(true)
+
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  lastLoginAt       DateTime?
+
+  // Relations
+  accounts          Account[]
+  sessions          Session[]
+  emailTokens       EmailVerificationToken[]
+
+  // Matching - as initiator (studentA)
+  matchesAsA        Match[]   @relation("MatchStudentA")
+  // Matching - as partner (studentB)
+  matchesAsB        Match[]   @relation("MatchStudentB")
+  validatedMatches  Match[]   @relation("MatchValidator")
+  pairExclusionsAsA MatchPairExclusion[] @relation("ExclusionStudentA")
+  pairExclusionsAsB MatchPairExclusion[] @relation("ExclusionStudentB")
+  createdExclusions MatchPairExclusion[] @relation("ExclusionCreator")
+
+  confirmations     MatchConfirmation[]
+  notifications     Notification[]
+  photoPublications PhotoPublication[]
+  photoParticipants PhotoParticipant[]
+  photoConsents     PhotoConsent[]
+  reports           Report[]  @relation("ReportAuthor")
+  reportedContent   Report[]  @relation("ReportTarget")
+  auditLogs         AdminAuditLog[] @relation("AuditActor")
+
+  @@index([email])
+  @@index([groupId])
+  @@index([status])
+  @@index([role])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model EmailVerificationToken {
+  id        String   @id @default(cuid())
+  userId    String
+  tokenHash String   @unique // SHA-256 hash of the actual token
+  type      TokenType @default(EMAIL_VERIFICATION)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([tokenHash])
+}
+
+// ==================== GROUPS ====================
+
+model Group {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  color       String?  // hex color for UI
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users       User[]
+
+  // Cannot be deleted if used in historical data - soft delete via isActive
+  @@index([isActive])
+}
+
+// ==================== MATCHING CYCLE ====================
+
+model MatchingCycle {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  status      CycleStatus @default(DRAFT)
+  totalWeeks  Int         @default(6)
+  startDate   DateTime?
+  endDate     DateTime?
+  timezone    String      @default("Africa/Dakar")
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  weeks       MatchingWeek[]
+  exclusions  MatchPairExclusion[]
+
+  @@index([status])
+}
+
+model MatchingWeek {
+  id          String     @id @default(cuid())
+  cycleId     String
+  weekNumber  Int        // 1-6
+  status      WeekStatus @default(DRAFT)
+  publishedAt DateTime?
+  startDate   DateTime?
+  endDate     DateTime?
+
+  // Algorithm metadata
+  algorithmVersion String?
+  generationStats  Json?  // quality metrics
+  generationSeed   String? // for reproducibility
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  cycle       MatchingCycle @relation(fields: [cycleId], references: [id])
+  matches     Match[]
+  exclusions  MatchPairExclusion[]
+
+  @@unique([cycleId, weekNumber])
+  @@index([cycleId])
+  @@index([status])
+}
+
+model Match {
+  id               String                @id @default(cuid())
+  weekId           String
+  studentAId       String
+  studentBId       String
+  validationStatus MatchValidationStatus @default(PENDING)
+  validatedAt      DateTime?
+  validatedById    String?
+  rejectionReason  String?
+
+  // Ordered: studentA < studentB (by id) to prevent duplicate pairs
+  createdAt   DateTime @default(now())
+
+  week          MatchingWeek        @relation(fields: [weekId], references: [id])
+  studentA      User                @relation("MatchStudentA", fields: [studentAId], references: [id])
+  studentB      User                @relation("MatchStudentB", fields: [studentBId], references: [id])
+  validatedBy   User?               @relation("MatchValidator", fields: [validatedById], references: [id])
+  confirmations MatchConfirmation[]
+
+  @@unique([weekId, studentAId, studentBId])
+  @@index([weekId])
+  @@index([weekId, validationStatus])
+  @@index([studentAId])
+  @@index([studentBId])
+}
+
+model MatchPairExclusion {
+  id          String   @id @default(cuid())
+  cycleId     String
+  weekId      String?
+  studentAId  String
+  studentBId  String
+  reason      String?
+  createdById String?
+  createdAt   DateTime @default(now())
+
+  cycle       MatchingCycle @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  week        MatchingWeek? @relation(fields: [weekId], references: [id], onDelete: SetNull)
+  studentA    User          @relation("ExclusionStudentA", fields: [studentAId], references: [id])
+  studentB    User          @relation("ExclusionStudentB", fields: [studentBId], references: [id])
+  createdBy   User?         @relation("ExclusionCreator", fields: [createdById], references: [id])
+
+  @@unique([cycleId, studentAId, studentBId])
+  @@index([cycleId])
+  @@index([weekId])
+}
+
+model MatchConfirmation {
+  id          String              @id @default(cuid())
+  matchId     String
+  userId      String              // who confirmed
+  status      ConfirmationStatus  @default(CONFIRMED)
+  confirmedAt DateTime            @default(now())
+  note        String?
+
+  match       Match @relation(fields: [matchId], references: [id])
+  user        User  @relation(fields: [userId], references: [id])
+
+  @@unique([matchId, userId])
+  @@index([matchId])
+  @@index([userId])
+}
+
+// ==================== NOTIFICATIONS ====================
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     String
+  body      String
+  link      String?
+  isRead    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+  readAt    DateTime?
+
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([createdAt])
+}
+
+model EmailDeliveryAttempt {
+  id          String      @id @default(cuid())
+  userId      String?
+  toEmail     String
+  subject     String
+  type        EmailType
+  status      EmailStatus @default(PENDING)
+  externalId  String?     // provider message ID
+  errorMessage String?
+  attempts    Int         @default(0)
+  nextRetryAt DateTime?
+  sentAt      DateTime?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@index([type])
+  @@index([toEmail])
+}
+
+// ==================== RETRO ALBUM ====================
+
+model PhotoPublication {
+  id          String            @id @default(cuid())
+  authorId    String
+  caption     String?
+  imageKey    String            // storage key (not full URL)
+  imageUrl    String?           // cached CDN URL
+  status      PhotoStatus       @default(PENDING_MODERATION)
+  rejectionReason String?
+  publishedAt DateTime?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  author        User              @relation(fields: [authorId], references: [id])
+  participants  PhotoParticipant[]
+  consents      PhotoConsent[]
+  reports       Report[]          @relation("PhotoReport")
+
+  @@index([authorId])
+  @@index([status])
+}
+
+model PhotoParticipant {
+  id                String           @id @default(cuid())
+  photoId           String
+  userId            String
+  consentStatus     ConsentStatus    @default(PENDING)
+
+  photo             PhotoPublication @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  user              User             @relation(fields: [userId], references: [id])
+
+  @@unique([photoId, userId])
+}
+
+model PhotoConsent {
+  id          String           @id @default(cuid())
+  photoId     String
+  userId      String
+  given       Boolean          @default(false)
+  givenAt     DateTime?
+  revokedAt   DateTime?
+
+  photo       PhotoPublication @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  user        User             @relation(fields: [userId], references: [id])
+
+  @@unique([photoId, userId])
+}
+
+// ==================== REPORTS & MODERATION ====================
+
+model Report {
+  id          String       @id @default(cuid())
+  authorId    String
+  targetUserId String?
+  photoId     String?
+  reason      String
+  details     String?
+  status      ReportStatus @default(PENDING)
+  resolvedAt  DateTime?
+  resolution  String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  author      User             @relation("ReportAuthor", fields: [authorId], references: [id])
+  targetUser  User?            @relation("ReportTarget", fields: [targetUserId], references: [id])
+  photo       PhotoPublication? @relation("PhotoReport", fields: [photoId], references: [id])
+
+  @@index([authorId])
+  @@index([status])
+}
+
+// ==================== CONFIGURATION ====================
+
+model AppConfiguration {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String   @db.Text
+  description String?
+  isPublic    Boolean  @default(false)
+  updatedAt   DateTime @updatedAt
+  updatedBy   String?  // userId
+
+  @@index([key])
+}
+
+// ==================== AUDIT ====================
+
+model AdminAuditLog {
+  id          String   @id @default(cuid())
+  actorId     String
+  action      String
+  targetType  String?
+  targetId    String?
+  details     Json?
+  ipAddress   String?
+  createdAt   DateTime @default(now())
+
+  actor       User @relation("AuditActor", fields: [actorId], references: [id])
+
+  @@index([actorId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// ==================== ENUMS ====================
+
+enum Role {
+  STUDENT
+  MODERATOR
+  ADMIN
+}
+
+enum AccountStatus {
+  PENDING_VERIFICATION
+  PENDING_APPROVAL
+  CORRECTION_REQUESTED
+  ACTIVE
+  REJECTED
+  SUSPENDED
+}
+
+enum TokenType {
+  EMAIL_VERIFICATION
+  PASSWORD_RESET
+}
+
+enum CycleStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  COMPLETED
+  ARCHIVED
+}
+
+enum WeekStatus {
+  DRAFT
+  GENERATED
+  PREVIEWING
+  READY_TO_PUBLISH
+  PUBLISHED
+  CLOSED
+}
+
+enum MatchValidationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum ConfirmationStatus {
+  CONFIRMED
+  DISPUTED
+}
+
+enum NotificationType {
+  ACCOUNT_VERIFIED
+  ACCOUNT_APPROVED
+  ACCOUNT_REJECTED
+  ACCOUNT_SUSPENDED
+  ACCOUNT_REACTIVATED
+  CORRECTION_REQUESTED
+  MATCH_PUBLISHED
+  WEEKLY_REMINDER
+  CYCLE_ENDED
+  PHOTO_APPROVED
+  PHOTO_REJECTED
+  PHOTO_REPORTED
+  GENERAL
+}
+
+enum EmailType {
+  WELCOME
+  EMAIL_VERIFICATION
+  ACCOUNT_APPROVED
+  ACCOUNT_REJECTED
+  ACCOUNT_SUSPENDED
+  CORRECTION_REQUESTED
+  MATCH_PUBLISHED
+  WEEKLY_REMINDER
+  CYCLE_ENDED
+  RETRO_INVITATION
+  PASSWORD_RESET
+  GENERAL
+}
+
+enum EmailStatus {
+  PENDING
+  SENT
+  FAILED
+  CANCELLED
+}
+
+enum PhotoStatus {
+  PENDING_MODERATION
+  APPROVED
+  REJECTED
+  WITHDRAWN
+}
+
+enum ConsentStatus {
+  PENDING
+  GIVEN
+  REVOKED
+}
+
+enum ReportStatus {
+  PENDING
+  REVIEWING
+  RESOLVED
+  DISMISSED
+}

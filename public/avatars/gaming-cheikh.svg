@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <radialGradient id="bg-cheikh" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#1E40AF"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#060913"/>
+    </radialGradient>
+    <linearGradient id="skin-cheikh" x1="30%" y1="15%" x2="70%" y2="90%">
+      <stop offset="0%" stop-color="#6F3D24"/>
+      <stop offset="55%" stop-color="#522B18"/>
+      <stop offset="100%" stop-color="#361B0D"/>
+    </linearGradient>
+    <linearGradient id="bomber-cheikh" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="50%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#090D16"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="48" fill="url(#bg-cheikh)"/>
+  <circle cx="128" cy="128" r="104" stroke="#38BDF8" stroke-opacity="0.22" stroke-width="1.5"/>
+  <circle cx="52" cy="70" r="2.5" fill="#60A5FA"/>
+  <circle cx="204" cy="64" r="2" fill="#38BDF8"/>
+
+  <!-- Bomber Jacket & Collar -->
+  <path d="M40 256C44 198 78 176 128 176C178 176 212 198 216 256H40Z" fill="url(#bomber-cheikh)"/>
+  <path d="M88 176L128 228L168 176" fill="#F8FAFC"/>
+  <path d="M76 182L116 238M180 182L140 238" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Neck & Head -->
+  <rect x="109" y="148" width="38" height="38" rx="14" fill="#3E1F10"/>
+  <path d="M84 104C84 72 102 56 128 56C154 56 172 72 172 104C172 140 154 166 128 166C102 166 84 140 84 104Z" fill="url(#skin-cheikh)"/>
+
+  <!-- Textured Twists Hair -->
+  <path d="M82 90C84 62 102 48 128 48C154 48 172 62 174 90C164 74 148 68 128 68C108 68 92 74 82 90Z" fill="#120F16"/>
+  <circle cx="96" cy="58" r="9" fill="#18141F"/>
+  <circle cx="112" cy="52" r="10" fill="#120F16"/>
+  <circle cx="128" cy="50" r="10" fill="#18141F"/>
+  <circle cx="144" cy="52" r="10" fill="#120F16"/>
+  <circle cx="160" cy="58" r="9" fill="#18141F"/>
+
+  <!-- Eyes & Eyebrows -->
+  <path d="M96 95L118 98" stroke="#120F16" stroke-width="4" stroke-linecap="round"/>
+  <path d="M160 95L138 98" stroke="#120F16" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="108" cy="109" rx="8.5" ry="6.5" fill="#FFFFFF"/>
+  <ellipse cx="148" cy="109" rx="8.5" ry="6.5" fill="#FFFFFF"/>
+  <circle cx="109" cy="109" r="4.8" fill="#120F16"/>
+  <circle cx="147" cy="109" r="4.8" fill="#120F16"/>
+  <circle cx="111" cy="107" r="1.8" fill="#FFFFFF"/>
+  <circle cx="149" cy="107" r="1.8" fill="#FFFFFF"/>
+
+  <!-- Nose, Smile & Sharp Beard -->
+  <path d="M128 112V127L123 125" stroke="#361B0D" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M88 124C90 150 108 166 128 166C148 166 166 150 168 124C162 142 148 152 128 152C108 152 94 142 88 124Z" fill="#18141F"/>
+  <path d="M114 139C120 144 136 144 142 139" stroke="#F8FAFC" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <radialGradient id="bg-awa" cx="50%" cy="30%" r="72%">
+      <stop offset="0%" stop-color="#312E81"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#070B14"/>
+    </radialGradient>
+    <radialGradient id="halo-awa" cx="50%" cy="42%" r="48%">
+      <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.42"/>
+      <stop offset="60%" stop-color="#38BDF8" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="skin-awa" x1="30%" y1="15%" x2="70%" y2="90%">
+      <stop offset="0%" stop-color="#844D32"/>
+      <stop offset="55%" stop-color="#663820"/>
+      <stop offset="100%" stop-color="#472514"/>
+    </linearGradient>
+    <linearGradient id="suit-awa" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="55%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="48" fill="url(#bg-awa)"/>
+  <circle cx="128" cy="112" r="108" fill="url(#halo-awa)"/>
+  <circle cx="128" cy="128" r="102" stroke="#A78BFA" stroke-opacity="0.24" stroke-width="1.5"/>
+
+  <!-- Braids Framing Face (Back Layer) -->
+  <path d="M78 88C70 128 68 172 72 212" stroke="#16121D" stroke-width="14" stroke-linecap="round"/>
+  <path d="M178 88C186 128 188 172 184 212" stroke="#16121D" stroke-width="14" stroke-linecap="round"/>
+  <!-- Gold Braid Cuffs -->
+  <rect x="65" y="148" width="14" height="5" rx="2" fill="#FBBF24"/>
+  <rect x="64" y="176" width="14" height="5" rx="2" fill="#FBBF24"/>
+  <rect x="177" y="148" width="14" height="5" rx="2" fill="#FBBF24"/>
+  <rect x="178" y="176" width="14" height="5" rx="2" fill="#FBBF24"/>
+
+  <!-- Top Braided Crown Bun -->
+  <circle cx="128" cy="48" r="24" fill="#16121D" stroke="#38BDF8" stroke-opacity="0.4" stroke-width="1.5"/>
+  <rect x="116" y="56" width="24" height="5" rx="2.5" fill="#FBBF24"/>
+
+  <!-- Astral AI Jacket -->
+  <path d="M44 256C48 200 80 178 128 178C176 178 208 200 212 256H44Z" fill="url(#suit-awa)"/>
+  <path d="M92 178L128 220L164 178" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+
+  <!-- Neck & Head -->
+  <rect x="112" y="146" width="32" height="38" rx="15" fill="#522B18"/>
+  <path d="M86 104C86 74 104 58 128 58C152 58 170 74 170 104C170 140 152 164 128 164C104 164 86 140 86 104Z" fill="url(#skin-awa)"/>
+
+  <!-- Braided Hairline -->
+  <path d="M86 96C90 68 106 58 128 58C150 58 166 68 170 96C158 78 144 72 128 72C112 72 98 78 86 96Z" fill="#16121D"/>
+
+  <!-- Expressive Eyes -->
+  <ellipse cx="109" cy="108" rx="8.5" ry="6.5" fill="#FFFFFF"/>
+  <ellipse cx="147" cy="108" rx="8.5" ry="6.5" fill="#FFFFFF"/>
+  <circle cx="110" cy="108" r="4.8" fill="#1E1410"/>
+  <circle cx="146" cy="108" r="4.8" fill="#1E1410"/>
+  <circle cx="111.5" cy="106.5" r="2" fill="#FFFFFF"/>
+  <circle cx="147.5" cy="106.5" r="2" fill="#FFFFFF"/>
+
+  <!-- Sleek Rimless AR Smart Glasses -->
+  <rect x="92" y="97" width="33" height="21" rx="10" stroke="#38BDF8" stroke-width="2.2" fill="#38BDF8" fill-opacity="0.14"/>
+  <rect x="131" y="97" width="33" height="21" rx="10" stroke="#38BDF8" stroke-width="2.2" fill="#38BDF8" fill-opacity="0.14"/>
+  <line x1="125" y1="106" x2="131" y2="106" stroke="#38BDF8" stroke-width="2.2"/>
+
+  <!-- Eyebrows, Nose & Warm Smile -->
+  <path d="M98 93C104 90 113 90 119 93" stroke="#16121D" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M137 93C143 90 152 90 158 93" stroke="#16121D" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M128 112V125L123 124" stroke="#472514" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M115 137C121 144 135 144 141 137" stroke="#F8FAFC" stroke-width="3" stroke-linecap="round"/>
+</svg>

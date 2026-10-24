@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#0F294A"/>
+  <circle cx="200" cy="120" r="150" fill="#2864E8" fill-opacity="0.3"/>
+  <rect x="80" y="90" width="640" height="320" rx="24" fill="#FFFFFF" fill-opacity="0.08" stroke="#93C5FD" stroke-opacity="0.35" stroke-width="2"/>
+  <circle cx="310" cy="225" r="54" fill="#1F50C7"/>
+  <circle cx="490" cy="225" r="54" fill="#4F46E5"/>
+  <text x="400" y="345" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="24" font-weight="700">Session Débriefing — SRT × Autres × DUT INFO</text>
+  <text x="400" y="380" text-anchor="middle" fill="#BFDBFE" font-family="system-ui, sans-serif" font-size="16">Partage de projets et entraide entre groupes — Synkro</text>
+</svg>

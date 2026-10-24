@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <radialGradient id="bg-ibrahima" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#0E7490"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#060B14"/>
+    </radialGradient>
+    <linearGradient id="skin-ibrahima" x1="30%" y1="15%" x2="70%" y2="90%">
+      <stop offset="0%" stop-color="#7E482C"/>
+      <stop offset="55%" stop-color="#5E331D"/>
+      <stop offset="100%" stop-color="#3E2010"/>
+    </linearGradient>
+    <linearGradient id="vest-ibrahima" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="55%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="48" fill="url(#bg-ibrahima)"/>
+  <circle cx="128" cy="128" r="104" stroke="#38BDF8" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="4 8"/>
+
+  <!-- Tied-Back Locs (Back Volume) -->
+  <path d="M74 84C66 118 68 156 76 184" stroke="#17131C" stroke-width="16" stroke-linecap="round"/>
+  <path d="M182 84C190 118 188 156 180 184" stroke="#17131C" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- Tactical Network Vest -->
+  <path d="M42 256C46 198 78 176 128 176C178 176 210 198 214 256H42Z" fill="url(#vest-ibrahima)"/>
+  <path d="M84 176L104 256M172 176L152 256" stroke="#38BDF8" stroke-width="2.5" stroke-opacity="0.6"/>
+  <circle cx="128" cy="216" r="10" fill="#0F172A" stroke="#38BDF8" stroke-width="2.5"/>
+  <circle cx="128" cy="216" r="4" fill="#38BDF8"/>
+
+  <!-- Neck & Head -->
+  <rect x="110" y="148" width="36" height="38" rx="14" fill="#472615"/>
+  <path d="M85 104C85 74 103 58 128 58C153 58 171 74 171 104C171 140 153 166 128 166C103 166 85 140 85 104Z" fill="url(#skin-ibrahima)"/>
+
+  <!-- Styled Locs on Crown -->
+  <path d="M84 88C88 58 106 46 128 46C150 46 168 58 172 88" fill="#17131C"/>
+  <path d="M92 56L100 84M110 50L114 82M128 48L128 80M146 50L142 82M164 56L156 84" stroke="#292233" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Amber Coding Glasses -->
+  <rect x="91" y="98" width="34" height="22" rx="6" fill="#F59E0B" fill-opacity="0.22" stroke="#FBBF24" stroke-width="2.4"/>
+  <rect x="131" y="98" width="34" height="22" rx="6" fill="#F59E0B" fill-opacity="0.22" stroke="#FBBF24" stroke-width="2.4"/>
+  <line x1="125" y1="108" x2="131" y2="108" stroke="#FBBF24" stroke-width="2.4"/>
+
+  <!-- Eyes -->
+  <circle cx="108" cy="109" r="5" fill="#141118"/>
+  <circle cx="148" cy="109" r="5" fill="#141118"/>
+  <circle cx="110" cy="107" r="2" fill="#FFFFFF"/>
+  <circle cx="150" cy="107" r="2" fill="#FFFFFF"/>
+
+  <!-- Nose, Mustache & Goatee -->
+  <path d="M128 113V127L123 125" stroke="#3E2010" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M114 138C121 143 135 143 142 138" stroke="#F8FAFC" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="M116 154C122 162 134 162 140 154" stroke="#17131C" stroke-width="5" stroke-linecap="round"/>
+</svg>

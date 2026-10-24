@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="vcBg" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="55%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#040711"/>
+    </radialGradient>
+    <radialGradient id="vcHalo" cx="50%" cy="42%" r="48%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#040711" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vcSkin" cx="40%" cy="34%" r="64%">
+      <stop offset="0%" stop-color="#874C29"/>
+      <stop offset="56%" stop-color="#643518"/>
+      <stop offset="100%" stop-color="#3E1E0B"/>
+    </radialGradient>
+    <linearGradient id="vcBomber" x1="88" y1="350" x2="424" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="55%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="url(#vcBg)"/>
+  <circle cx="256" cy="224" r="220" fill="url(#vcHalo)"/>
+
+  <!-- Bomber Jacket -->
+  <path d="M80 512C88 406 148 358 256 358C364 358 424 406 432 512Z" fill="url(#vcBomber)"/>
+  <path d="M186 358C206 396 230 412 256 412C282 412 306 396 326 358" fill="#0F172A" stroke="#38BDF8" stroke-width="4"/>
+  <path d="M256 412V512" stroke="#38BDF8" stroke-width="4"/>
+
+  <!-- Neck -->
+  <rect x="218" y="302" width="76" height="82" rx="34" fill="url(#vcSkin)"/>
+
+  <!-- Head -->
+  <path d="M156 206C156 138 196 104 256 104C316 104 356 138 356 206C356 286 314 340 256 340C198 340 156 286 156 206Z" fill="url(#vcSkin)"/>
+
+  <!-- Textured Twists Hair -->
+  <path d="M156 184C160 116 198 82 256 82C314 82 352 116 356 184C332 150 298 136 256 136C214 136 180 150 156 184Z" fill="#090D16"/>
+  <circle cx="192" cy="112" r="18" fill="#0F172A"/>
+  <circle cx="224" cy="100" r="20" fill="#090D16"/>
+  <circle cx="256" cy="96" r="22" fill="#0F172A"/>
+  <circle cx="288" cy="100" r="20" fill="#090D16"/>
+  <circle cx="320" cy="112" r="18" fill="#0F172A"/>
+
+  <!-- Brows & Eyes -->
+  <path d="M184 198C200 190 220 190 234 198" stroke="#090D16" stroke-width="7.5" stroke-linecap="round"/>
+  <path d="M278 198C292 190 312 190 328 198" stroke="#090D16" stroke-width="7.5" stroke-linecap="round"/>
+  <ellipse cx="208" cy="226" rx="18.5" ry="13.5" fill="#F8FAFC"/>
+  <ellipse cx="304" cy="226" rx="18.5" ry="13.5" fill="#F8FAFC"/>
+  <circle cx="210" cy="226" r="10" fill="#231006"/>
+  <circle cx="302" cy="226" r="10" fill="#231006"/>
+  <circle cx="214" cy="221" r="3.8" fill="#FFFFFF"/>
+  <circle cx="306" cy="221" r="3.8" fill="#FFFFFF"/>
+
+  <!-- Sculpted Beard & Mustache -->
+  <path d="M162 252C168 312 204 342 256 342C308 342 344 312 350 252C336 286 306 308 256 308C206 308 176 286 162 252Z" fill="#0B0F19"/>
+  <path d="M216 282C236 274 276 274 296 282" stroke="#0B0F19" stroke-width="8" stroke-linecap="round"/>
+  <path d="M256 220V260C248 266 264 266 268 258" stroke="#3B1A08" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M230 290C244 300 268 300 282 290" stroke="#F8FAFC" stroke-width="4.5" stroke-linecap="round"/>
+</svg>

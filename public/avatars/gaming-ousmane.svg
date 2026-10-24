@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <radialGradient id="bg-ousmane" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#050911"/>
+    </radialGradient>
+    <linearGradient id="skin-ousmane" x1="30%" y1="15%" x2="70%" y2="90%">
+      <stop offset="0%" stop-color="#844E32"/>
+      <stop offset="55%" stop-color="#63361F"/>
+      <stop offset="100%" stop-color="#422212"/>
+    </linearGradient>
+    <linearGradient id="armor-ousmane" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="50%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="48" fill="url(#bg-ousmane)"/>
+  <circle cx="128" cy="128" r="104" stroke="#38BDF8" stroke-opacity="0.24" stroke-width="1.5"/>
+
+  <!-- Robotics Exosuit Shoulders -->
+  <path d="M38 256C42 196 76 174 128 174C180 174 214 196 218 256H38Z" fill="url(#armor-ousmane)"/>
+  <path d="M68 186L96 256M188 186L160 256" stroke="#38BDF8" stroke-width="3"/>
+  <rect x="108" y="198" width="40" height="16" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+  <circle cx="120" cy="206" r="3" fill="#38BDF8"/>
+  <circle cx="136" cy="206" r="3" fill="#34D399"/>
+
+  <!-- Neck & Head -->
+  <rect x="110" y="148" width="36" height="36" rx="14" fill="#4B2816"/>
+  <path d="M84 104C84 74 102 58 128 58C154 58 172 74 172 104C172 140 154 166 128 166C102 166 84 140 84 104Z" fill="url(#skin-ousmane)"/>
+
+  <!-- Flat-Top Hair & Forehead Robotics Goggles -->
+  <rect x="84" y="46" width="88" height="34" rx="12" fill="#16131D"/>
+  <!-- Goggles resting on forehead -->
+  <rect x="82" y="60" width="92" height="22" rx="11" fill="#1E293B" stroke="#60A5FA" stroke-width="2.2"/>
+  <circle cx="106" cy="71" r="8" fill="#38BDF8" fill-opacity="0.8"/>
+  <circle cx="150" cy="71" r="8" fill="#38BDF8" fill-opacity="0.8"/>
+
+  <!-- Eyes & Eyebrows -->
+  <path d="M96 96L118 98" stroke="#16131D" stroke-width="3.8" stroke-linecap="round"/>
+  <path d="M160 96L138 98" stroke="#16131D" stroke-width="3.8" stroke-linecap="round"/>
+  <ellipse cx="108" cy="110" rx="8.5" ry="6.5" fill="#FFFFFF"/>
+  <ellipse cx="148" cy="110" rx="8.5" ry="6.5" fill="#FFFFFF"/>
+  <circle cx="109" cy="110" r="4.8" fill="#16131D"/>
+  <circle cx="147" cy="110" r="4.8" fill="#16131D"/>
+  <circle cx="111" cy="108" r="1.8" fill="#FFFFFF"/>
+  <circle cx="149" cy="108" r="1.8" fill="#FFFFFF"/>
+
+  <!-- Nose & Friendly Smile -->
+  <path d="M128 113V127L123 125" stroke="#422212" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M114 139C120 145 136 145 142 139" stroke="#F8FAFC" stroke-width="3.2" stroke-linecap="round"/>
+</svg>

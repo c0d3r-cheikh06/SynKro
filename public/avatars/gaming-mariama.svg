@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <radialGradient id="bg-mariama" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#3730A3"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#060A14"/>
+    </radialGradient>
+    <linearGradient id="skin-mariama" x1="30%" y1="15%" x2="70%" y2="90%">
+      <stop offset="0%" stop-color="#7C472B"/>
+      <stop offset="55%" stop-color="#5D321C"/>
+      <stop offset="100%" stop-color="#3F2010"/>
+    </linearGradient>
+    <linearGradient id="top-mariama" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="55%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="48" fill="url(#bg-mariama)"/>
+  <circle cx="128" cy="128" r="104" stroke="#818CF8" stroke-opacity="0.25" stroke-width="1.5"/>
+
+  <!-- Long Box Braids with Cyan Streak -->
+  <path d="M76 82C66 126 64 176 68 228" stroke="#14111A" stroke-width="18" stroke-linecap="round"/>
+  <path d="M180 82C190 126 192 176 188 228" stroke="#14111A" stroke-width="18" stroke-linecap="round"/>
+  <path d="M82 88C74 130 72 174 76 220" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M174 88C182 130 184 174 180 220" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Asymmetrical Designer Top -->
+  <path d="M44 256C48 200 80 178 128 178C176 178 208 200 212 256H44Z" fill="url(#top-mariama)"/>
+  <path d="M84 184C108 202 148 202 172 184" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Neck & Head -->
+  <rect x="112" y="146" width="32" height="38" rx="15" fill="#4A2715"/>
+  <path d="M86 104C86 74 104 58 128 58C152 58 170 74 170 104C170 140 152 164 128 164C104 164 86 140 86 104Z" fill="url(#skin-mariama)"/>
+
+  <!-- Swooped Braided Bangs -->
+  <path d="M84 96C88 64 106 52 128 52C150 52 168 64 172 96C154 74 122 70 84 96Z" fill="#14111A"/>
+  <path d="M90 78C114 66 144 68 166 84" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Expressive Eyes -->
+  <path d="M98 95C104 91 114 91 120 94" stroke="#14111A" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M136 94C142 91 152 91 158 95" stroke="#14111A" stroke-width="3.2" stroke-linecap="round"/>
+  <ellipse cx="109" cy="108" rx="8.5" ry="6.5" fill="#FFFFFF"/>
+  <ellipse cx="147" cy="108" rx="8.5" ry="6.5" fill="#FFFFFF"/>
+  <circle cx="110" cy="108" r="4.8" fill="#14111A"/>
+  <circle cx="146" cy="108" r="4.8" fill="#14111A"/>
+  <circle cx="111.5" cy="106.5" r="2" fill="#FFFFFF"/>
+  <circle cx="147.5" cy="106.5" r="2" fill="#FFFFFF"/>
+
+  <!-- Nose & Radiant Smile -->
+  <path d="M128 112V125L123 124" stroke="#3F2010" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M114 137C120 144 136 144 142 137" stroke="#F8FAFC" stroke-width="3.2" stroke-linecap="round"/>
+</svg>

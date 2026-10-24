@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <radialGradient id="bg-moussa" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#173B67"/>
+      <stop offset="60%" stop-color="#0B1325"/>
+      <stop offset="100%" stop-color="#050912"/>
+    </radialGradient>
+    <radialGradient id="halo-moussa" cx="50%" cy="45%" r="46%">
+      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.5"/>
+      <stop offset="65%" stop-color="#38BDF8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0B1325" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="skin-moussa" x1="30%" y1="10%" x2="70%" y2="90%">
+      <stop offset="0%" stop-color="#754228"/>
+      <stop offset="55%" stop-color="#59301B"/>
+      <stop offset="100%" stop-color="#3D1F10"/>
+    </linearGradient>
+    <linearGradient id="hoodie-moussa" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#090D16"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="48" fill="url(#bg-moussa)"/>
+  <circle cx="128" cy="116" r="106" fill="url(#halo-moussa)"/>
+  <polygon points="128,18 226,74 226,182 128,238 30,182 30,74" stroke="#60A5FA" stroke-opacity="0.2" stroke-width="1.5"/>
+
+  <!-- Gaming Headset Band -->
+  <path d="M72 114C72 70 96 46 128 46C160 46 184 70 184 114" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+  <path d="M76 102C76 68 98 48 128 48C158 48 180 68 180 102" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Tech Hoodie & Neon Trim -->
+  <path d="M40 256C44 198 78 176 128 176C178 176 212 198 216 256H40Z" fill="url(#hoodie-moussa)"/>
+  <path d="M74 188L108 242M182 188L148 242" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M106 180H150L138 218H118L106 180Z" fill="#2563EB"/>
+
+  <!-- Neck & Head -->
+  <rect x="109" y="148" width="38" height="38" rx="14" fill="#472514"/>
+  <path d="M84 102C84 72 102 56 128 56C154 56 172 72 172 102C172 140 154 166 128 166C102 166 84 140 84 102Z" fill="url(#skin-moussa)"/>
+
+  <!-- Sharp High-Top Fade Haircut -->
+  <path d="M84 94C84 68 98 52 128 52C158 52 172 68 172 94C166 80 150 74 128 74C106 74 90 80 84 94Z" fill="#141118"/>
+  <rect x="88" y="50" width="80" height="22" rx="8" fill="#141118"/>
+  <!-- Hairline precision cut line -->
+  <line x1="94" y1="68" x2="112" y2="71" stroke="#754228" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Headset Earcups (Glowing) -->
+  <rect x="66" y="96" width="18" height="36" rx="9" fill="#1E293B" stroke="#38BDF8" stroke-width="2.5"/>
+  <rect x="172" y="96" width="18" height="36" rx="9" fill="#1E293B" stroke="#38BDF8" stroke-width="2.5"/>
+  <circle cx="75" cy="114" r="4" fill="#38BDF8"/>
+  <circle cx="181" cy="114" r="4" fill="#38BDF8"/>
+  <!-- Boom Mic -->
+  <path d="M76 128C82 146 96 150 112 148" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="114" cy="148" r="3.5" fill="#38BDF8"/>
+
+  <!-- Eyes & Eyebrows -->
+  <path d="M96 96L118 99" stroke="#141118" stroke-width="4" stroke-linecap="round"/>
+  <path d="M160 96L138 99" stroke="#141118" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="108" cy="110" rx="8.5" ry="6.5" fill="#FFFFFF"/>
+  <ellipse cx="148" cy="110" rx="8.5" ry="6.5" fill="#FFFFFF"/>
+  <circle cx="109" cy="110" r="4.8" fill="#141118"/>
+  <circle cx="147" cy="110" r="4.8" fill="#141118"/>
+  <circle cx="111" cy="108" r="1.8" fill="#FFFFFF"/>
+  <circle cx="149" cy="108" r="1.8" fill="#FFFFFF"/>
+
+  <!-- Nose & Confident Grin -->
+  <path d="M128 112V128L122 126" stroke="#3D1F10" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M113 139C120 145 136 145 143 139" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
